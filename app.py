@@ -150,7 +150,7 @@ def page_subject_recommendation():
             major_list = []
             for i in range(116):
                 if df['개설학과'][i] == major :
-                    major_list.append()
+                    major_list.append(df['교과구분'][i])
 
             df = df[df['교과구분'].isin(major_list)]
             tmp_df = df[df['분야'].isin(select_multi_species2)]
@@ -160,7 +160,7 @@ def page_subject_recommendation():
             elective_list = []
             for i in range(116) :
                 if ((df['교과구분'][i] == '전공' or df['교과구분'][i] == '전선' or df['교과구분'][i] == '전필') and df['개설학과'][i] != major) :
-                    elective_list.append()
+                    elective_list.append(df['교과구분'][i])
             df = df[df['교과구분'].isin(elective_list)]
             tmp_df = df[df['분야'].isin(select_multi_species2)]
             tmp_df = tmp_df.loc[:,['교과목','tel', '교과코드', '학점', '강의실', '강의타입']]
